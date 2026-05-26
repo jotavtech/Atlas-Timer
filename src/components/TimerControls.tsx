@@ -2,7 +2,7 @@
 
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { motion } from "framer-motion";
-import type { TimerStatus } from "@/hooks/useTimer";
+import type { TimerStatus } from "@/context/TimerContext";
 import { cn } from "@/lib/cn";
 
 interface TimerControlsProps {

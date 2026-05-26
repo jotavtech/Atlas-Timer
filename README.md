@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# Atlas Timer
 
-First, run the development server:
+**Time, in its stillest form.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Um relógio ambiente e timer de foco — pensados para ficar no monitor enquanto
+o trabalho profundo acontece. Tipografia cromada, fundos animados, três
+identidades visuais. Stillness mode.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[atlas-timer.vercel.app](https://atlas-timer.vercel.app)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Sobre
 
-To learn more about Next.js, take a look at the following resources:
+Atlas Timer é um objeto digital de mesa. Não é um aplicativo de produtividade
+com gráficos, métricas, badges, streaks ou notificações. É uma superfície
+silenciosa para o tempo passar — em foco, em descanso, ou só passando.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Faz parte do ecossistema **Atlas / JotavTech**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Modos visuais
 
-## Deploy on Vercel
+| Modo      | Uso                                                                  |
+| --------- | -------------------------------------------------------------------- |
+| **Relax** | OLED profundo. Para a noite, descanso, tela ambiente.                |
+| **Dark**  | Escuro de uso diurno. Mais cromado, mais presente, mais ambiente.    |
+| **Light** | Claro editorial. Para luz natural e contraste alto.                  |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A preferência é salva localmente. Relax é o padrão.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Modos de uso
+
+- **Ambient Clock** — relógio cinematográfico. Hora, dia da semana, data.
+  Para deixar no segundo monitor.
+- **Focus Timer** — contagem regressiva com presets (1, 3, 5, 10, 15, 25 min)
+  e input livre. Progress ring cromado. Finalização suave com fade-in/out de
+  tom sine.
+
+A navegação entre Clock e Timer é contínua: o timer continua rodando mesmo
+quando você troca de tela, o fundo nunca reinicia, a sessão sobrevive a
+recarregamento.
+
+## Princípios
+
+- Nada que pisca.
+- Nada que assusta.
+- Nada de vermelho de urgência.
+- Nada de microinteração frenética.
+- Som suave (≤ 10 s, sine, fade in/out).
+- Controles que somem em fullscreen e voltam ao primeiro movimento.
+
+A sensação que se busca é
+
+> *"Estou aqui, o tempo está passando, tudo está sob controle."*
+
+não
+
+> *"Corre, você está atrasado."*
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind v4 · Framer Motion · Lucide.
+
+---
+
+<div align="center">
+
+`ATLAS · JotavTech ecosystem · Stillness mode`
+
+</div>
