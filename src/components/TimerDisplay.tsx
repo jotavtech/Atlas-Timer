@@ -46,8 +46,12 @@ export function TimerDisplay({ remainingMs, status }: TimerDisplayProps) {
         }
         className="relative"
       >
-        <h1 className="font-display tabular chrome-text text-[16vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[11vw] lg:text-[9vw]">
-          <AnimatedNumber value={value} digitSize="xl" />
+        <h1 className="font-display text-[16vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[11vw] lg:text-[9vw]">
+          <AnimatedNumber
+            value={value}
+            digitSize="xl"
+            textClassName="chrome-text tabular"
+          />
         </h1>
 
         <motion.div

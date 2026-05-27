@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 interface AnimatedDigitProps {
   value: string;
   size?: "sm" | "md" | "lg" | "xl";
+  textClassName?: string;
 }
 
 const sizeClass: Record<NonNullable<AnimatedDigitProps["size"]>, string> = {
@@ -14,7 +15,11 @@ const sizeClass: Record<NonNullable<AnimatedDigitProps["size"]>, string> = {
   xl: "w-[0.62em]",
 };
 
-export function AnimatedDigit({ value, size = "lg" }: AnimatedDigitProps) {
+export function AnimatedDigit({
+  value,
+  size = "lg",
+  textClassName,
+}: AnimatedDigitProps) {
   return (
     <span
       className={`relative inline-block overflow-hidden align-baseline ${sizeClass[size]}`}
@@ -27,7 +32,7 @@ export function AnimatedDigit({ value, size = "lg" }: AnimatedDigitProps) {
           animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
           exit={{ y: "-100%", opacity: 0, filter: "blur(8px)" }}
           transition={{ duration: 0.45, ease: [0.22, 0.94, 0.36, 1] }}
-          className="absolute inset-0 flex items-center justify-center"
+          className={`absolute inset-0 flex items-center justify-center ${textClassName ?? ""}`}
         >
           {value}
         </motion.span>
@@ -40,12 +45,14 @@ interface AnimatedNumberProps {
   value: string;
   className?: string;
   digitSize?: AnimatedDigitProps["size"];
+  textClassName?: string;
 }
 
 export function AnimatedNumber({
   value,
   className,
   digitSize = "lg",
+  textClassName,
 }: AnimatedNumberProps) {
   return (
     <span className={className} style={{ display: "inline-flex" }}>
@@ -53,13 +60,18 @@ export function AnimatedNumber({
         char === ":" ? (
           <span
             key={`sep-${idx}`}
-            className="inline-block opacity-50"
+            className={`inline-block opacity-50 ${textClassName ?? ""}`}
             style={{ width: "0.3em", textAlign: "center" }}
           >
             :
           </span>
         ) : (
-          <AnimatedDigit key={`d-${idx}-${char}`} value={char} size={digitSize} />
+          <AnimatedDigit
+            key={`d-${idx}-${char}`}
+            value={char}
+            size={digitSize}
+            textClassName={textClassName}
+          />
         )
       )}
     </span>

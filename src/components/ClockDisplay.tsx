@@ -44,8 +44,12 @@ export function ClockDisplay({ status = "ATLAS AMBIENT CLOCK" }: ClockDisplayPro
       </motion.span>
 
       <div className="relative">
-        <h1 className="font-display tabular chrome-text text-[22vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[16vw] lg:text-[13vw]">
-          <AnimatedNumber value={main} digitSize="xl" />
+        <h1 className="font-display text-[22vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[16vw] lg:text-[13vw]">
+          <AnimatedNumber
+            value={main}
+            digitSize="xl"
+            textClassName="chrome-text tabular"
+          />
         </h1>
 
         <motion.div
