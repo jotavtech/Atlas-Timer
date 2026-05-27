@@ -8,7 +8,6 @@ import { AnimatedNumber } from "./AnimatedDigit";
 interface TimerDisplayProps {
   remainingMs: number;
   status: TimerStatus;
-  showExactTime: boolean;
 }
 
 const STATUS_LABEL: Record<TimerStatus, string> = {
@@ -18,11 +17,7 @@ const STATUS_LABEL: Record<TimerStatus, string> = {
   complete: "ATLAS SESSION COMPLETE",
 };
 
-export function TimerDisplay({
-  remainingMs,
-  status,
-  showExactTime,
-}: TimerDisplayProps) {
+export function TimerDisplay({ remainingMs, status }: TimerDisplayProps) {
   const { hours, minutes, seconds, showHours } = formatTimerRemaining(remainingMs);
   const value = showHours ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
   const complete = status === "complete";
@@ -38,66 +33,44 @@ export function TimerDisplay({
         {STATUS_LABEL[status]}
       </motion.span>
 
-      {showExactTime ? (
-        <motion.div
-          animate={
-            complete
-              ? { scale: [1, 1.025, 1], filter: ["blur(0px)", "blur(1.5px)", "blur(0px)"] }
-              : { scale: 1, filter: "blur(0px)" }
-          }
-          transition={
-            complete
-              ? { duration: 2.2, repeat: Infinity, ease: "easeInOut" }
-              : { duration: 0.3 }
-          }
-          className="relative"
-        >
-          <h1 className="font-display tabular chrome-text text-[16vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[11vw] lg:text-[9vw]">
-            <AnimatedNumber value={value} digitSize="xl" />
-          </h1>
+      <motion.div
+        animate={
+          complete
+            ? { scale: [1, 1.025, 1], filter: ["blur(0px)", "blur(1.5px)", "blur(0px)"] }
+            : { scale: 1, filter: "blur(0px)" }
+        }
+        transition={
+          complete
+            ? { duration: 2.2, repeat: Infinity, ease: "easeInOut" }
+            : { duration: 0.3 }
+        }
+        className="relative"
+      >
+        <h1 className="font-display tabular chrome-text text-[16vw] font-bold leading-[0.85] tracking-[-0.04em] md:text-[11vw] lg:text-[9vw]">
+          <AnimatedNumber value={value} digitSize="xl" />
+        </h1>
 
-          <motion.div
-            aria-hidden
-            animate={{
-              opacity: complete
-                ? [0.3, 0.7, 0.3]
-                : status === "running"
-                ? [0.25, 0.45, 0.25]
-                : 0.18,
-            }}
-            transition={{
-              duration: complete ? 2 : 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute inset-0 -z-10 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(ellipse 60% 60% at 50% 50%, var(--color-glow) 0%, transparent 70%)",
-            }}
-          />
-        </motion.div>
-      ) : (
         <motion.div
           aria-hidden
           animate={{
             opacity: complete
-              ? [0.4, 0.9, 0.4]
+              ? [0.3, 0.7, 0.3]
               : status === "running"
-              ? [0.55, 0.85, 0.55]
-              : 0.55,
-            scale: status === "running" ? [1, 1.04, 1] : 1,
+              ? [0.25, 0.45, 0.25]
+              : 0.18,
           }}
           transition={{
-            duration: complete ? 2 : 6,
+            duration: complete ? 2 : 4.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="font-display chrome-text text-[14vw] font-semibold leading-none tracking-[0.06em] md:text-[10vw] lg:text-[8vw]"
-        >
-          ATLAS
-        </motion.div>
-      )}
+          className="pointer-events-none absolute inset-0 -z-10 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 60% at 50% 50%, var(--color-glow) 0%, transparent 70%)",
+          }}
+        />
+      </motion.div>
     </div>
   );
 }

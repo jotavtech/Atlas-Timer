@@ -11,7 +11,7 @@ export function AtlasShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className="relative flex min-h-screen flex-col"
+      className="relative flex h-screen flex-col overflow-hidden"
       data-fullscreen={isFullscreen ? "true" : "false"}
     >
       <AtlasChromeBackground

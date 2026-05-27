@@ -6,7 +6,6 @@ import { useChromeVisibility } from "@/context/ChromeVisibilityContext";
 import { useSettings } from "@/context/SettingsContext";
 import { useTimerStore } from "@/context/TimerContext";
 import { DurationInput } from "@/components/DurationInput";
-import { ExactTimeToggle } from "@/components/ExactTimeToggle";
 import { PresetButton } from "@/components/PresetButton";
 import { ProgressRing } from "@/components/ProgressRing";
 import { SoundToggle } from "@/components/SoundToggle";
@@ -94,7 +93,7 @@ export default function TimerPage() {
     setPreset,
     registerCompleteHandler,
   } = useTimerStore();
-  const { exactTime, sound } = useSettings();
+  const { sound } = useSettings();
   const { notify } = useChromeVisibility();
 
   const [ringSize, setRingSize] = useState(520);
@@ -190,11 +189,7 @@ export default function TimerPage() {
           size={ringSize}
           active={status === "running" || status === "complete"}
         >
-          <TimerDisplay
-            remainingMs={remainingMs}
-            status={status}
-            showExactTime={exactTime}
-          />
+          <TimerDisplay remainingMs={remainingMs} status={status} />
         </ProgressRing>
       </div>
 
@@ -236,7 +231,6 @@ export default function TimerPage() {
                 canStart={canStart}
               />
               <div className="flex items-center gap-2">
-                <ExactTimeToggle />
                 <SoundToggle />
               </div>
             </div>

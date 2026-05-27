@@ -63,7 +63,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body className="min-h-screen bg-(--color-bg) text-(--color-fg)">
+      <body className="h-screen overflow-hidden bg-(--color-bg) text-(--color-fg)">
         <AtlasProviders>
           <AtlasShell>{children}</AtlasShell>
         </AtlasProviders>

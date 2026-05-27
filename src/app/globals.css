@@ -99,8 +99,10 @@ body {
   transition: background 600ms ease, color 600ms ease;
 }
 
+html,
 body {
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
 }
 
 ::selection {
